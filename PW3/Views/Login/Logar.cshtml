@@ -1,6 +1,8 @@
-﻿<form action="" method="post">
+﻿@model LoginModel
+
+<form action="" method="get">
 	<label>Email</label>
-	<input type="email" name="Email" value="" />
+	<input type="email" name="Login" value="" />
 	<br /><br />
 	<label>Senha</label>
 	<input type="password" name="Senha" value="" />
@@ -8,5 +10,9 @@
 	<button type=" submit" class="btn btn-primary">
 		Logar
 	</button>
-	</input>
+	
 </form>
+
+<h1>@Model.Login</h1>
+
+<h1>@Model.Senha</h1>
