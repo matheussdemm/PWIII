@@ -12,17 +12,20 @@ namespace PW3.Controllers
         public ActionResult Index()
         {
             List<DisciplinaEntidade> model = new List<DisciplinaEntidade>();
-            DisciplinaEntidade item1 = new DisciplinaEntidade();
-            item1.Id = 1;
-            item1.Nome = "Programação Web";
-            item1.Ativo = true;
-            model.Add(item1);
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
 
-            DisciplinaEntidade item2 = new DisciplinaEntidade();
-            item2.Id = 2;
-            item2.Nome = "Educação Física";
-            item2.Ativo = true;
-            model.Add(item2);
+            var cmd = new MySqlCommand("SELECT id, nome FROM disciplinas", connection);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                DisciplinaEntidade u = new DisciplinaEntidade();
+                u.Id = reader.GetInt32("id");
+                u.Nome = reader.GetString("nome");
+                model.Add(u);
+            }
+            connection.Close();
 
             return View(model);
         }
