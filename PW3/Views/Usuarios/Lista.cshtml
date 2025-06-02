@@ -1,11 +1,11 @@
-﻿@model IEnumerable<PW3.Entidades.DisciplinaEntidade>
+﻿@model IEnumerable<PW3.Entidades.UsuarioEntidade>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Lista</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -18,6 +18,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ativo)
@@ -33,6 +39,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ativo)
